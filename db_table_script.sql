@@ -3,72 +3,44 @@ use ENCUESTA
 
 if exists (select 1
    from dbo.sysreferences r join dbo.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('ENCUESTAS') and o.name = 'FK_ENCUESTA_RELATIONS_USUARIO')
+   where r.fkeyid = object_id('ENCUESTAS') and o.name = 'FK_ENCUESTA_USUARIO_E_USUARIO')
 alter table ENCUESTAS
-   drop constraint FK_ENCUESTA_RELATIONS_USUARIO
+   drop constraint FK_ENCUESTA_USUARIO_E_USUARIO
 go
 
 if exists (select 1
    from dbo.sysreferences r join dbo.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('ENCUESTAS') and o.name = 'FK_ENCUESTA_RELATIONS_ITEM_UNO')
-alter table ENCUESTAS
-   drop constraint FK_ENCUESTA_RELATIONS_ITEM_UNO
-go
-
-if exists (select 1
-   from dbo.sysreferences r join dbo.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('ENCUESTAS') and o.name = 'FK_ENCUESTA_RELATIONS_ITEM_TRE')
-alter table ENCUESTAS
-   drop constraint FK_ENCUESTA_RELATIONS_ITEM_TRE
-go
-
-if exists (select 1
-   from dbo.sysreferences r join dbo.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('ENCUESTAS') and o.name = 'FK_ENCUESTA_RELATIONS_ITEM_DOS')
-alter table ENCUESTAS
-   drop constraint FK_ENCUESTA_RELATIONS_ITEM_DOS
-go
-
-if exists (select 1
-   from dbo.sysreferences r join dbo.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('ENCUESTAS') and o.name = 'FK_ENCUESTA_RELATIONS_RESULTAD')
-alter table ENCUESTAS
-   drop constraint FK_ENCUESTA_RELATIONS_RESULTAD
-go
-
-if exists (select 1
-   from dbo.sysreferences r join dbo.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('GRUPOS') and o.name = 'FK_GRUPOS_RELATIONS_USUARIO')
+   where r.fkeyid = object_id('GRUPOS') and o.name = 'FK_GRUPOS_USUARIO_G_USUARIO')
 alter table GRUPOS
-   drop constraint FK_GRUPOS_RELATIONS_USUARIO
+   drop constraint FK_GRUPOS_USUARIO_G_USUARIO
 go
 
 if exists (select 1
    from dbo.sysreferences r join dbo.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('ITEM_DOS') and o.name = 'FK_ITEM_DOS_RELATIONS_ENCUESTA')
+   where r.fkeyid = object_id('ITEM_DOS') and o.name = 'FK_ITEM_DOS_ENCUESTA__ENCUESTA')
 alter table ITEM_DOS
-   drop constraint FK_ITEM_DOS_RELATIONS_ENCUESTA
+   drop constraint FK_ITEM_DOS_ENCUESTA__ENCUESTA
 go
 
 if exists (select 1
    from dbo.sysreferences r join dbo.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('ITEM_TRES') and o.name = 'FK_ITEM_TRE_RELATIONS_ENCUESTA')
+   where r.fkeyid = object_id('ITEM_TRES') and o.name = 'FK_ITEM_TRE_ENCUESTA__ENCUESTA')
 alter table ITEM_TRES
-   drop constraint FK_ITEM_TRE_RELATIONS_ENCUESTA
+   drop constraint FK_ITEM_TRE_ENCUESTA__ENCUESTA
 go
 
 if exists (select 1
    from dbo.sysreferences r join dbo.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('ITEM_UNO') and o.name = 'FK_ITEM_UNO_RELATIONS_ENCUESTA')
+   where r.fkeyid = object_id('ITEM_UNO') and o.name = 'FK_ITEM_UNO_ENCUESTA__ENCUESTA')
 alter table ITEM_UNO
-   drop constraint FK_ITEM_UNO_RELATIONS_ENCUESTA
+   drop constraint FK_ITEM_UNO_ENCUESTA__ENCUESTA
 go
 
 if exists (select 1
    from dbo.sysreferences r join dbo.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('RESULTADO') and o.name = 'FK_RESULTAD_RELATIONS_ENCUESTA')
+   where r.fkeyid = object_id('RESULTADO') and o.name = 'FK_RESULTAD_ENCUESTA__ENCUESTA')
 alter table RESULTADO
-   drop constraint FK_RESULTAD_RELATIONS_ENCUESTA
+   drop constraint FK_RESULTAD_ENCUESTA__ENCUESTA
 go
 
 if exists (select 1
@@ -214,12 +186,8 @@ go
 /* Table: ENCUESTAS                                             */
 /*==============================================================*/
 create table ENCUESTAS (
-   ID_ENCUESTA          int                  not null,
-   ID_ITEM3             int                  null,
+   ID_ENCUESTA          int                  not null IDENTITY(1,1),
    ID_USUARIO           int                  null,
-   ID_RESULTADO         int                  null,
-   ID_ITEM2             int                  null,
-   ID_ITEM1             int                  null,
    ID_JEFE              int                  null,
    ID_ENCUESTADO        int                  null,
    ESTADO               varchar(7)           null,
@@ -239,7 +207,7 @@ go
 /* Index: RELATIONSHIP_3_FK                                     */
 /*==============================================================*/
 create index RELATIONSHIP_3_FK on ENCUESTAS (
-ID_ITEM1 ASC
+ID_ENCUESTA ASC
 )
 go
 
@@ -247,7 +215,7 @@ go
 /* Index: RELATIONSHIP_5_FK                                     */
 /*==============================================================*/
 create index RELATIONSHIP_5_FK on ENCUESTAS (
-ID_ITEM3 ASC
+ID_ENCUESTA ASC
 )
 go
 
@@ -255,7 +223,7 @@ go
 /* Index: RELATIONSHIP_7_FK                                     */
 /*==============================================================*/
 create index RELATIONSHIP_7_FK on ENCUESTAS (
-ID_ITEM2 ASC
+ID_ENCUESTA ASC
 )
 go
 
@@ -263,7 +231,7 @@ go
 /* Index: RELATIONSHIP_9_FK                                     */
 /*==============================================================*/
 create index RELATIONSHIP_9_FK on ENCUESTAS (
-ID_RESULTADO ASC
+ID_ENCUESTA ASC
 )
 go
 
@@ -271,7 +239,7 @@ go
 /* Table: GRUPOS                                                */
 /*==============================================================*/
 create table GRUPOS (
-   ID_GRUPO             int                  not null,
+   ID_GRUPO             int                  not null IDENTITY(1,1),
    ID_USUARIO           int                  null,
    ID_JEFE              int                  null,
    ID_ENCUESTADO        int                  null,
@@ -291,7 +259,7 @@ go
 /* Table: ITEM_DOS                                              */
 /*==============================================================*/
 create table ITEM_DOS (
-   ID_ITEM2             int                  not null,
+   ID_ITEM2             int                  not null IDENTITY(1,1),
    ID_ENCUESTA          int                  null,
    ENCUESTA_ID          int                  null,
    DOS_RES_UNO          char(1)              null,
@@ -313,7 +281,7 @@ go
 /* Table: ITEM_TRES                                             */
 /*==============================================================*/
 create table ITEM_TRES (
-   ID_ITEM3             int                  not null,
+   ID_ITEM3             int                  not null IDENTITY(1,1),
    ID_ENCUESTA          int                  null,
    ENCUESTA_ID          int                  null,
    TRES_RES_UNO         char(1)              null,
@@ -339,7 +307,7 @@ go
 /* Table: ITEM_UNO                                              */
 /*==============================================================*/
 create table ITEM_UNO (
-   ID_ITEM1             int                  not null,
+   ID_ITEM1             int                  not null IDENTITY(1,1),
    ID_ENCUESTA          int                  null,
    ENCUESTA_ID          int                  null,
    UNO_RES_UNO          char(1)              null,
@@ -366,9 +334,9 @@ go
 /* Table: RESULTADO                                             */
 /*==============================================================*/
 create table RESULTADO (
-   ID_RESULTADO         int                  not null,
+   ID_RESULTADO         int                  not null IDENTITY(1,1),
    ID_ENCUESTA          int                  null,
-   PORCENTAJE           decimal(0,0)         null,
+   PORCENTAJE           decimal              null,
    DESEMPENO            varchar(100)         null,
    constraint PK_RESULTADO primary key nonclustered (ID_RESULTADO)
 )
@@ -386,7 +354,8 @@ go
 /* Table: USUARIO                                               */
 /*==============================================================*/
 create table USUARIO (
-   ID_USUARIO           int                  not null,
+   ID_USUARIO           int                  not null IDENTITY(1,1),
+   RUT                  varchar(10)          null,
    NOMBRE               varchar(100)         null,
    APELLIDO             varchar(100)         null,
    PASSWORD             varchar(8)           null,
@@ -396,51 +365,31 @@ create table USUARIO (
 go
 
 alter table ENCUESTAS
-   add constraint FK_ENCUESTA_RELATIONS_USUARIO foreign key (ID_USUARIO)
+   add constraint FK_ENCUESTA_USUARIO_E_USUARIO foreign key (ID_USUARIO)
       references USUARIO (ID_USUARIO)
 go
 
-alter table ENCUESTAS
-   add constraint FK_ENCUESTA_RELATIONS_ITEM_UNO foreign key (ID_ITEM1)
-      references ITEM_UNO (ID_ITEM1)
-go
-
-alter table ENCUESTAS
-   add constraint FK_ENCUESTA_RELATIONS_ITEM_TRE foreign key (ID_ITEM3)
-      references ITEM_TRES (ID_ITEM3)
-go
-
-alter table ENCUESTAS
-   add constraint FK_ENCUESTA_RELATIONS_ITEM_DOS foreign key (ID_ITEM2)
-      references ITEM_DOS (ID_ITEM2)
-go
-
-alter table ENCUESTAS
-   add constraint FK_ENCUESTA_RELATIONS_RESULTAD foreign key (ID_RESULTADO)
-      references RESULTADO (ID_RESULTADO)
-go
-
 alter table GRUPOS
-   add constraint FK_GRUPOS_RELATIONS_USUARIO foreign key (ID_USUARIO)
+   add constraint FK_GRUPOS_USUARIO_G_USUARIO foreign key (ID_USUARIO)
       references USUARIO (ID_USUARIO)
 go
 
 alter table ITEM_DOS
-   add constraint FK_ITEM_DOS_RELATIONS_ENCUESTA foreign key (ID_ENCUESTA)
+   add constraint FK_ITEM_DOS_ENCUESTA__ENCUESTA foreign key (ID_ENCUESTA)
       references ENCUESTAS (ID_ENCUESTA)
 go
 
 alter table ITEM_TRES
-   add constraint FK_ITEM_TRE_RELATIONS_ENCUESTA foreign key (ID_ENCUESTA)
+   add constraint FK_ITEM_TRE_ENCUESTA__ENCUESTA foreign key (ID_ENCUESTA)
       references ENCUESTAS (ID_ENCUESTA)
 go
 
 alter table ITEM_UNO
-   add constraint FK_ITEM_UNO_RELATIONS_ENCUESTA foreign key (ID_ENCUESTA)
+   add constraint FK_ITEM_UNO_ENCUESTA__ENCUESTA foreign key (ID_ENCUESTA)
       references ENCUESTAS (ID_ENCUESTA)
 go
 
 alter table RESULTADO
-   add constraint FK_RESULTAD_RELATIONS_ENCUESTA foreign key (ID_ENCUESTA)
+   add constraint FK_RESULTAD_ENCUESTA__ENCUESTA foreign key (ID_ENCUESTA)
       references ENCUESTAS (ID_ENCUESTA)
 go
