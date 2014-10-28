@@ -62,5 +62,15 @@ namespace Negocio
 
             return ds;
         }
+        public DataSet get_usuarioByID()
+        {
+            SqlConnection co = new SqlConnection("Data Source=R580-PC;Initial Catalog=ENCUESTA;Integrated Security=True");
+            string query = "select * from USUARIO where ID_USUARIO = '" + this._Id_usuario + "'";
+            SqlDataAdapter da = new SqlDataAdapter(query, co);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            return ds;
+        }
     }
 }

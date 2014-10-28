@@ -21,6 +21,12 @@
         {
             text-align: left;
         }
+        .style5
+        {}
+        .style6
+        {
+            width: 199px;
+        }
         </style>
 </head>
 <body>
@@ -45,6 +51,43 @@
         </tr>
     </table>
     <div>
+    
+        <br />
+        <table align="center" class="style5">
+            <tr>
+                <td class="style6">
+                    Seleccione Usuario a Evaluar</td>
+                <td>
+                    <asp:DropDownList ID="ddliEncuestado" runat="server" 
+                        DataSourceID="SqlDataSource1" DataTextField="APELLIDO" 
+                        DataValueField="ID_ENCUESTADO">
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                        ConnectionString="Data Source=R580-PC;Initial Catalog=ENCUESTA;Integrated Security=True" 
+                        ProviderName="System.Data.SqlClient" SelectCommand="SELECT USUARIO.NOMBRE, USUARIO.APELLIDO, USUARIO.ID_USUARIO, GRUPOS.ID_ENCUESTADO, GRUPOS.ID_USUARIO AS Expr1, GRUPOS.ID_JEFE 
+FROM GRUPOS
+INNER JOIN USUARIO 
+ON GRUPOS.ID_USUARIO = USUARIO.ID_USUARIO
+AND GRUPOS.ID_JEFE = @id_usuario">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="lblIDEncuestador" Name="id_usuario" 
+                                PropertyName="Text" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td class="style6">
+                    &nbsp;</td>
+                <td>
+                    <asp:Button ID="btnIrEvaluar" runat="server" onclick="btnIrEvaluar_Click" 
+                        PostBackUrl="~/Item1.aspx" Text="Ir" />
+                </td>
+            </tr>
+        </table>
+        <br />
+        <asp:Label ID="lblIDEncuestador" runat="server" Visible="False"></asp:Label>
     
     </div>
     </form>

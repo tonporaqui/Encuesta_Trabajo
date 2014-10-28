@@ -65,9 +65,8 @@
     
         <br />
         <table class="style9">
-            <% 
-            string nose = "eva";
-            if (Session["perfil"].ToString().Equals(nose))
+        <% 
+            if (Session["perfil"].ToString().Equals("eva"))
            { 
          %>
             <tr>

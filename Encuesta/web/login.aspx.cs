@@ -33,6 +33,7 @@ public partial class login : System.Web.UI.Page
             nombre = dato.Tables[0].Rows[0].ItemArray[2].ToString();
             apellido = dato.Tables[0].Rows[0].ItemArray[3].ToString();
             perfil = dato.Tables[0].Rows[0].ItemArray[5].ToString();
+            Session["id_user"] = id_user;
             Session["rut"] = rut;
             Session["nombre"] = nombre+" "+apellido;
             Session["perfil"] = perfil;
