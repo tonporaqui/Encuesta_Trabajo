@@ -63,8 +63,7 @@
                         DataValueField="ID_ENCUESTADO">
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                        ConnectionString="Data Source=R580-PC;Initial Catalog=ENCUESTA;Integrated Security=True" 
-                        ProviderName="System.Data.SqlClient" SelectCommand="SELECT USUARIO.NOMBRE, USUARIO.APELLIDO, USUARIO.ID_USUARIO, GRUPOS.ID_ENCUESTADO, GRUPOS.ID_USUARIO AS Expr1, GRUPOS.ID_JEFE 
+                        ConnectionString="<%$ ConnectionStrings:ENCUESTAConnectionString %>" SelectCommand="SELECT USUARIO.NOMBRE, USUARIO.APELLIDO, USUARIO.ID_USUARIO, GRUPOS.ID_ENCUESTADO, GRUPOS.ID_USUARIO AS Expr1, GRUPOS.ID_JEFE 
 FROM GRUPOS
 INNER JOIN USUARIO 
 ON GRUPOS.ID_USUARIO = USUARIO.ID_USUARIO
@@ -82,10 +81,35 @@ AND GRUPOS.ID_JEFE = @id_usuario">
                     &nbsp;</td>
                 <td>
                     <asp:Button ID="btnIrEvaluar" runat="server" onclick="btnIrEvaluar_Click" 
-                        PostBackUrl="~/Item1.aspx" Text="Ir" />
+                        PostBackUrl="~/Item1.aspx" Text="Ir Evaluar" />
                 </td>
             </tr>
         </table>
+        <br />
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+            DataKeyNames="ID_ENCUESTA" DataSourceID="SqlDataSource2" 
+            HorizontalAlign="Center">
+            <Columns>
+                <asp:HyperLinkField DataNavigateUrlFields="ID_ENCUESTA" 
+                    DataNavigateUrlFormatString="Detalle.aspx?id={0}" DataTextField="ID_ENCUESTA" 
+                    HeaderText="NUMERO ENCUESTA" />
+                <asp:BoundField DataField="NOMBRE" HeaderText="NOMBRE" 
+                    SortExpression="NOMBRE" />
+                <asp:BoundField DataField="APELLIDO" HeaderText="APELLIDO" 
+                    SortExpression="APELLIDO" />
+                <asp:BoundField DataField="ESTADO" HeaderText="ESTADO" 
+                    SortExpression="ESTADO" />
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ENCUESTAConnectionString %>" 
+            SelectCommand="SELECT us.NOMBRE, us.APELLIDO, encuestas.ID_ENCUESTA, encuestas.ESTADO, i1.UNO_RES_UNO, i1.UNO_RES_DOS, i1.UNO_RES_TRES, i1.UNO_RES_CUATRO, i1.UNO_RES_CINCO, i1.UNO_RES_SEIS, i1.UNO_RES_SIETE, i1.UNO_RES_OBS_D, i1.UNO_RES_OBS_E, i2.DOS_RES_UNO, i2.DOS_RES_DOS, i2.DOS_RES_TRES, i3.TRES_RES_UNO, i3.TRES_RES_DOS, i3.TRES_RES_TRES, i3.TRES_RES_CUATRO, i3.TRES_RES_CINCO, i3.TRES_RES_SEIS, i3.TRES_RES_OBS_GENERAL FROM ENCUESTAS AS encuestas INNER JOIN USUARIO AS us ON encuestas.ID_ENCUESTADO = us.ID_USUARIO INNER JOIN ITEM_UNO AS i1 ON encuestas.ID_ENCUESTA = i1.ENCUESTA_ID INNER JOIN ITEM_DOS AS i2 ON encuestas.ID_ENCUESTA = i2.ID_ENCUESTA INNER JOIN ITEM_TRES AS i3 ON encuestas.ID_ENCUESTA = i3.ENCUESTA_ID AND encuestas.ID_ENCUESTADO = @id_encuestado">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="ddliEncuestado" Name="id_encuestado" 
+                    PropertyName="SelectedValue" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <br />
         <br />
         <asp:Label ID="lblIDEncuestador" runat="server" Visible="False"></asp:Label>
     

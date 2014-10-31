@@ -83,7 +83,7 @@
            { %>
             <tr>
                 <td class="style11">
-                    <asp:RadioButtonList ID="rbOpcion1" runat="server">
+                    <asp:RadioButtonList ID="rbOpcion1" runat="server" >
                         <asp:ListItem Value="Evaluar_Personal">Evaluar Personal</asp:ListItem>
                         <asp:ListItem Value="Listar_Evaluacion">Listar Evaluacion</asp:ListItem>
                         <asp:ListItem Value="Ver_Evaluacion">Ver Evaluacion</asp:ListItem>

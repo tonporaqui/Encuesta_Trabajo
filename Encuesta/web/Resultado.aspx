@@ -74,7 +74,19 @@
                     :<asp:Label ID="lblDesempenio" runat="server" Text="Label"></asp:Label>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    &nbsp;</td>
+                <td class="style6">
+        <asp:Label ID="lblmensaje" runat="server"></asp:Label>
+                </td>
+            </tr>
         </table>
+    
+        <br />
+    
+        <br />
+        <br />
     
     </div>
     </form>

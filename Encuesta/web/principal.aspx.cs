@@ -23,5 +23,13 @@ public partial class principal : System.Web.UI.Page
         {
             Response.Redirect("evaluacion.aspx");
         }
+        if ((rbOpcion2.Text.Equals("Ver_Evaluacion")) || (rbOpcion1.Text.Equals("Ver_Evaluacion")))
+        {
+            Response.Redirect("Resultado.aspx");
+        }
+        if (rbOpcion1.Text.Equals("Listar_Evaluacion"))
+        {
+            Response.Redirect("evaluacion.aspx");
+        }
     }
 }

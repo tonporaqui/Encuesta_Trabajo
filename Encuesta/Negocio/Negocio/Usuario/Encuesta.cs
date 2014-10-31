@@ -54,6 +54,16 @@ namespace Negocio
             DataSet ds = new DataSet();
             da.Fill(ds);
         }
+        public DataSet get_EncuestaByIdUsuario()
+        {
+            SqlConnection co = new SqlConnection("Data Source=R580-PC;Initial Catalog=ENCUESTA;Integrated Security=True");
+            string query = "select * from ENCUESTAS where id_encuestado = '"+this._Id_usuario+"'";
+            SqlDataAdapter da = new SqlDataAdapter(query, co);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            return ds;
+        }
         public DataSet get_ultimoId()
         {
             SqlConnection co = new SqlConnection("Data Source=R580-PC;Initial Catalog=ENCUESTA;Integrated Security=True");
