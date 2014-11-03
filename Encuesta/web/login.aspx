@@ -18,13 +18,17 @@
         {
             width: 92%;
         }
+        .style11
+        {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
     
-        <h1>
+        <h1 class="style11">
             Ingreso a Encuesta</h1>
         <br />
         <table align="center" class="style1">
