@@ -63,7 +63,7 @@
                         DataValueField="ID_ENCUESTADO">
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                        ConnectionString="<%$ ConnectionStrings:ENCUESTAConnectionString %>" SelectCommand="SELECT USUARIO.NOMBRE, USUARIO.APELLIDO, USUARIO.ID_USUARIO, GRUPOS.ID_ENCUESTADO, GRUPOS.ID_USUARIO AS Expr1, GRUPOS.ID_JEFE 
+                        ConnectionString="<%$ ConnectionStrings:ENCUESTAConnectionString %>" SelectCommand="SELECT USUARIO.NOMBRE+' '+ USUARIO.APELLIDO AS APELLIDO, USUARIO.ID_USUARIO, GRUPOS.ID_ENCUESTADO, GRUPOS.ID_USUARIO AS Expr1, GRUPOS.ID_JEFE 
 FROM GRUPOS
 INNER JOIN USUARIO 
 ON GRUPOS.ID_USUARIO = USUARIO.ID_USUARIO

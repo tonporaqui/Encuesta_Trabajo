@@ -10,6 +10,7 @@ public partial class principal : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         lblUsuario.Text = Session["nombre"].ToString();
+        
     }
     protected void btnSalir_Click(object sender, EventArgs e)
     {

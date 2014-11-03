@@ -57,7 +57,7 @@ namespace Negocio
         public DataSet get_EncuestaByIdUsuario()
         {
             SqlConnection co = new SqlConnection("Data Source=R580-PC;Initial Catalog=ENCUESTA;Integrated Security=True");
-            string query = "select * from ENCUESTAS where id_encuestado = '"+this._Id_usuario+"'";
+            string query = "select * from ENCUESTAS where id_encuestado = '" + this._Id_usuario + "'";
             SqlDataAdapter da = new SqlDataAdapter(query, co);
             DataSet ds = new DataSet();
             da.Fill(ds);

@@ -22,11 +22,15 @@
         {
             text-align: left;
         }
+        .style5
+        {
+            text-align: center;
+        }
         </style>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div class="style5">
     
     <table style="width:100%;">
         <tr>
@@ -48,54 +52,210 @@
         </tr>
     </table>
         <br />
-        <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" 
-            CellPadding="4" DataKeyNames="ID_ENCUESTA" DataSourceID="SqlDataSource1" 
+        <br />
+        <asp:DetailsView ID="DetailsView2" runat="server" AutoGenerateRows="False" 
+            CellPadding="4" DataKeyNames="ID_ENCUESTA" DataSourceID="SqlEstado" 
             ForeColor="#333333" GridLines="None" Height="50px" HorizontalAlign="Center" 
-            SkinID="s" Width="350px">
+            Width="325px">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
             <EditRowStyle BackColor="#999999" />
             <FieldHeaderStyle BackColor="#E9ECF1" Font-Bold="True" />
             <Fields>
-                <asp:BoundField DataField="ID_ENCUESTA" HeaderText="NUMERO ENCUESTA" 
+                <asp:BoundField DataField="ID_ENCUESTA" HeaderText="NUMERO DE ENCUESTA" 
                     InsertVisible="False" ReadOnly="True" SortExpression="ID_ENCUESTA" />
                 <asp:BoundField DataField="ESTADO" HeaderText="ESTADO" 
                     SortExpression="ESTADO" />
-                <asp:BoundField DataField="UNO_RES_UNO" HeaderText="RESPUESTA 1 ITEM 1" 
+                <asp:CommandField ShowEditButton="True" />
+            </Fields>
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+        </asp:DetailsView>
+        <asp:SqlDataSource ID="SqlEstado" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ENCUESTAConnectionString %>" 
+            DeleteCommand="DELETE FROM [ENCUESTAS] WHERE [ID_ENCUESTA] = @ID_ENCUESTA" 
+            InsertCommand="INSERT INTO [ENCUESTAS] ([ESTADO]) VALUES (@ESTADO)" 
+            SelectCommand="SELECT [ESTADO], [ID_ENCUESTA] FROM [ENCUESTAS] WHERE ([ID_ENCUESTA] = @ID_ENCUESTA)" 
+            UpdateCommand="UPDATE [ENCUESTAS] SET [ESTADO] = @ESTADO WHERE [ID_ENCUESTA] = @ID_ENCUESTA">
+            <DeleteParameters>
+                <asp:Parameter Name="ID_ENCUESTA" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="ESTADO" Type="String" />
+            </InsertParameters>
+            <SelectParameters>
+                <asp:QueryStringParameter Name="ID_ENCUESTA" QueryStringField="id" 
+                    Type="Int32" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="ESTADO" Type="String" />
+                <asp:Parameter Name="ID_ENCUESTA" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <div class="style5">
+            <br />
+            <strong>RESPUESTAS ITEM 1<br />
+            </strong>
+            <br />
+        </div>
+        <asp:DetailsView ID="DetailsView3" runat="server" AutoGenerateRows="False" 
+            CellPadding="4" DataKeyNames="ID_ITEM1" DataSourceID="SqlItem1" 
+            ForeColor="#333333" GridLines="None" Height="50px" HorizontalAlign="Center" 
+            Width="325px">
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+            <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
+            <EditRowStyle BackColor="#999999" />
+            <FieldHeaderStyle BackColor="#E9ECF1" Font-Bold="True" />
+            <Fields>
+                <asp:BoundField DataField="UNO_RES_UNO" HeaderText="RESPUESTA 1" 
                     SortExpression="UNO_RES_UNO" />
-                <asp:BoundField DataField="UNO_RES_DOS" HeaderText="RESPUESTA 2 ITEM 1" 
+                <asp:BoundField DataField="UNO_RES_DOS" HeaderText="RESPUESTA 2" 
                     SortExpression="UNO_RES_DOS" />
-                <asp:BoundField DataField="UNO_RES_TRES" HeaderText="RESPUESTA 3 ITEM 1" 
+                <asp:BoundField DataField="UNO_RES_TRES" HeaderText="RESPUESTA 3" 
                     SortExpression="UNO_RES_TRES" />
-                <asp:BoundField DataField="UNO_RES_CUATRO" HeaderText="RESPUESTA 4 ITEM 1" 
+                <asp:BoundField DataField="UNO_RES_CUATRO" HeaderText="RESPUESTA 4" 
                     SortExpression="UNO_RES_CUATRO" />
-                <asp:BoundField DataField="UNO_RES_CINCO" HeaderText="RESPUESTA 5 ITEM 1" 
+                <asp:BoundField DataField="UNO_RES_CINCO" HeaderText="RESPUESTA 5" 
                     SortExpression="UNO_RES_CINCO" />
-                <asp:BoundField DataField="UNO_RES_SEIS" HeaderText="RESPUESTA 6 ITEM 1" 
+                <asp:BoundField DataField="UNO_RES_SEIS" HeaderText="RESPUESTA 6" 
                     SortExpression="UNO_RES_SEIS" />
-                <asp:BoundField DataField="UNO_RES_SIETE" HeaderText="RESPUESTA 7 ITEM 1" 
+                <asp:BoundField DataField="UNO_RES_SIETE" HeaderText="RESPUESTA 7" 
                     SortExpression="UNO_RES_SIETE" />
                 <asp:BoundField DataField="UNO_RES_OBS_D" HeaderText="OBSERVACION D" 
                     SortExpression="UNO_RES_OBS_D" />
                 <asp:BoundField DataField="UNO_RES_OBS_E" HeaderText="OBSERVACION E" 
                     SortExpression="UNO_RES_OBS_E" />
-                <asp:BoundField DataField="DOS_RES_UNO" HeaderText="RESPUESTA 1 ITEM 2" 
+                <asp:CommandField ShowEditButton="True" />
+            </Fields>
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+        </asp:DetailsView>
+        <asp:SqlDataSource ID="SqlItem1" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ENCUESTAConnectionString %>" 
+            DeleteCommand="DELETE FROM [ITEM_UNO] WHERE [ID_ITEM1] = @ID_ITEM1" 
+            InsertCommand="INSERT INTO [ITEM_UNO] ([ID_ENCUESTA], [ENCUESTA_ID], [UNO_RES_UNO], [UNO_RES_DOS], [UNO_RES_TRES], [UNO_RES_CUATRO], [UNO_RES_CINCO], [UNO_RES_SEIS], [UNO_RES_SIETE], [UNO_RES_OBS_D], [UNO_RES_OBS_E]) VALUES (@ID_ENCUESTA, @ENCUESTA_ID, @UNO_RES_UNO, @UNO_RES_DOS, @UNO_RES_TRES, @UNO_RES_CUATRO, @UNO_RES_CINCO, @UNO_RES_SEIS, @UNO_RES_SIETE, @UNO_RES_OBS_D, @UNO_RES_OBS_E)" 
+            SelectCommand="SELECT * FROM [ITEM_UNO] WHERE ([ID_ENCUESTA] = @ID_ENCUESTA)" 
+            UpdateCommand="UPDATE [ITEM_UNO] SET  [UNO_RES_UNO] = @UNO_RES_UNO, [UNO_RES_DOS] = @UNO_RES_DOS, [UNO_RES_TRES] = @UNO_RES_TRES, [UNO_RES_CUATRO] = @UNO_RES_CUATRO, [UNO_RES_CINCO] = @UNO_RES_CINCO, [UNO_RES_SEIS] = @UNO_RES_SEIS, [UNO_RES_SIETE] = @UNO_RES_SIETE, [UNO_RES_OBS_D] = @UNO_RES_OBS_D, [UNO_RES_OBS_E] = @UNO_RES_OBS_E WHERE [ID_ITEM1] = @ID_ITEM1">
+            <DeleteParameters>
+                <asp:Parameter Name="ID_ITEM1" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="ID_ENCUESTA" Type="Int32" />
+                <asp:Parameter Name="ENCUESTA_ID" Type="Int32" />
+                <asp:Parameter Name="UNO_RES_UNO" Type="String" />
+                <asp:Parameter Name="UNO_RES_DOS" Type="String" />
+                <asp:Parameter Name="UNO_RES_TRES" Type="String" />
+                <asp:Parameter Name="UNO_RES_CUATRO" Type="String" />
+                <asp:Parameter Name="UNO_RES_CINCO" Type="String" />
+                <asp:Parameter Name="UNO_RES_SEIS" Type="String" />
+                <asp:Parameter Name="UNO_RES_SIETE" Type="String" />
+                <asp:Parameter Name="UNO_RES_OBS_D" Type="String" />
+                <asp:Parameter Name="UNO_RES_OBS_E" Type="String" />
+            </InsertParameters>
+            <SelectParameters>
+                <asp:QueryStringParameter Name="ID_ENCUESTA" QueryStringField="id" 
+                    Type="Int32" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="ID_ENCUESTA" Type="Int32" />
+                <asp:Parameter Name="ENCUESTA_ID" Type="Int32" />
+                <asp:Parameter Name="UNO_RES_UNO" Type="String" />
+                <asp:Parameter Name="UNO_RES_DOS" Type="String" />
+                <asp:Parameter Name="UNO_RES_TRES" Type="String" />
+                <asp:Parameter Name="UNO_RES_CUATRO" Type="String" />
+                <asp:Parameter Name="UNO_RES_CINCO" Type="String" />
+                <asp:Parameter Name="UNO_RES_SEIS" Type="String" />
+                <asp:Parameter Name="UNO_RES_SIETE" Type="String" />
+                <asp:Parameter Name="UNO_RES_OBS_D" Type="String" />
+                <asp:Parameter Name="UNO_RES_OBS_E" Type="String" />
+                <asp:Parameter Name="ID_ITEM1" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <div class="style5">
+            <br />
+            <strong>RESPUESTA ITEM 2<br />
+            </strong>
+            <br />
+        </div>
+        <asp:DetailsView ID="DetailsView4" runat="server" AutoGenerateRows="False" 
+            CellPadding="4" DataKeyNames="ID_ITEM2" DataSourceID="SqlItem2" 
+            ForeColor="#333333" GridLines="None" Height="50px" HorizontalAlign="Center" 
+            Width="325px">
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+            <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
+            <EditRowStyle BackColor="#999999" />
+            <FieldHeaderStyle BackColor="#E9ECF1" Font-Bold="True" />
+            <Fields>
+                <asp:BoundField DataField="DOS_RES_UNO" HeaderText="RESPUESTA 1" 
                     SortExpression="DOS_RES_UNO" />
-                <asp:BoundField DataField="DOS_RES_DOS" HeaderText="RESPUESTA 2 ITEM 2" 
+                <asp:BoundField DataField="DOS_RES_DOS" HeaderText="RESPUESTA 2" 
                     SortExpression="DOS_RES_DOS" />
-                <asp:BoundField DataField="DOS_RES_TRES" HeaderText="RESPUESTA 3 ITEM 2" 
+                <asp:BoundField DataField="DOS_RES_TRES" HeaderText="RESPUESTA 3" 
                     SortExpression="DOS_RES_TRES" />
-                <asp:BoundField DataField="TRES_RES_UNO" HeaderText="RESPUESTA 1 ITEM 3" 
+                <asp:CommandField ShowEditButton="True" />
+            </Fields>
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+        </asp:DetailsView>
+        <asp:SqlDataSource ID="SqlItem2" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ENCUESTAConnectionString %>" 
+            DeleteCommand="DELETE FROM [ITEM_DOS] WHERE [ID_ITEM2] = @ID_ITEM2" 
+            InsertCommand="INSERT INTO [ITEM_DOS] ([ID_ENCUESTA], [ENCUESTA_ID], [DOS_RES_UNO], [DOS_RES_DOS], [DOS_RES_TRES]) VALUES (@ID_ENCUESTA, @ENCUESTA_ID, @DOS_RES_UNO, @DOS_RES_DOS, @DOS_RES_TRES)" 
+            SelectCommand="SELECT * FROM [ITEM_DOS] WHERE ([ID_ENCUESTA] = @ID_ENCUESTA)" 
+            UpdateCommand="UPDATE [ITEM_DOS] SET [DOS_RES_UNO] = @DOS_RES_UNO, [DOS_RES_DOS] = @DOS_RES_DOS, [DOS_RES_TRES] = @DOS_RES_TRES WHERE [ID_ITEM2] = @ID_ITEM2">
+            <DeleteParameters>
+                <asp:Parameter Name="ID_ITEM2" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="ID_ENCUESTA" Type="Int32" />
+                <asp:Parameter Name="ENCUESTA_ID" Type="Int32" />
+                <asp:Parameter Name="DOS_RES_UNO" Type="String" />
+                <asp:Parameter Name="DOS_RES_DOS" Type="String" />
+                <asp:Parameter Name="DOS_RES_TRES" Type="String" />
+            </InsertParameters>
+            <SelectParameters>
+                <asp:QueryStringParameter Name="ID_ENCUESTA" QueryStringField="id" 
+                    Type="Int32" />
+            </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="ID_ENCUESTA" Type="Int32" />
+                <asp:Parameter Name="ENCUESTA_ID" Type="Int32" />
+                <asp:Parameter Name="DOS_RES_UNO" Type="String" />
+                <asp:Parameter Name="DOS_RES_DOS" Type="String" />
+                <asp:Parameter Name="DOS_RES_TRES" Type="String" />
+                <asp:Parameter Name="ID_ITEM2" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <br />
+        <strong>RESPUESTA ITEM 3<br />
+        </strong>
+        <br />
+        <asp:DetailsView ID="DetailsView5" runat="server" AutoGenerateRows="False" 
+            CellPadding="4" DataKeyNames="ID_ITEM3" DataSourceID="SqlItem3" 
+            ForeColor="#333333" GridLines="None" Height="50px" HorizontalAlign="Center" 
+            Width="325px">
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+            <CommandRowStyle BackColor="#E2DED6" Font-Bold="True" />
+            <EditRowStyle BackColor="#999999" />
+            <FieldHeaderStyle BackColor="#E9ECF1" Font-Bold="True" />
+            <Fields>
+                <asp:BoundField DataField="TRES_RES_UNO" HeaderText="RESPUESTA 1" 
                     SortExpression="TRES_RES_UNO" />
-                <asp:BoundField DataField="TRES_RES_DOS" HeaderText="RESPUESTA 2 ITEM 3" 
+                <asp:BoundField DataField="TRES_RES_DOS" HeaderText="RESPUESTA 2" 
                     SortExpression="TRES_RES_DOS" />
-                <asp:BoundField DataField="TRES_RES_TRES" HeaderText="RESPUESTA 3 ITEM 3" 
+                <asp:BoundField DataField="TRES_RES_TRES" HeaderText="RESPUESTA 3" 
                     SortExpression="TRES_RES_TRES" />
-                <asp:BoundField DataField="TRES_RES_CUATRO" HeaderText="RESPUESTA 4 ITEM 3" 
+                <asp:BoundField DataField="TRES_RES_CUATRO" HeaderText="RESPUESTA 4" 
                     SortExpression="TRES_RES_CUATRO" />
-                <asp:BoundField DataField="TRES_RES_CINCO" HeaderText="RESPUESTA 5 ITEM 3" 
+                <asp:BoundField DataField="TRES_RES_CINCO" HeaderText="RESPUESTA 5" 
                     SortExpression="TRES_RES_CINCO" />
-                <asp:BoundField DataField="TRES_RES_SEIS" HeaderText="RESPUESTA 6 ITEM 3" 
+                <asp:BoundField DataField="TRES_RES_SEIS" HeaderText="RESPUESTA 6" 
                     SortExpression="TRES_RES_SEIS" />
                 <asp:BoundField DataField="TRES_RES_OBS_GENERAL" 
                     HeaderText="OBSERVACION GENERAL" SortExpression="TRES_RES_OBS_GENERAL" />
@@ -106,32 +266,41 @@
             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
             <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
         </asp:DetailsView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+        <asp:SqlDataSource ID="SqlItem3" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ENCUESTAConnectionString %>" 
-            DeleteCommand="DELETE FROM [ENCUESTAS] WHERE [ID_ENCUESTA] = @ID_ENCUESTA" 
-            InsertCommand="INSERT INTO [ENCUESTAS] ([ID_USUARIO], [ID_JEFE], [ID_ENCUESTADO], [ESTADO]) VALUES (@ID_USUARIO, @ID_JEFE, @ID_ENCUESTADO, @ESTADO)" 
-            SelectCommand="SELECT us.NOMBRE, us.APELLIDO, encuestas.ID_ENCUESTA,encuestas.ID_ENCUESTADO,encuestas.ID_JEFE,encuestas.ID_USUARIO, encuestas.ESTADO, i1.UNO_RES_UNO, i1.UNO_RES_DOS, i1.UNO_RES_TRES, i1.UNO_RES_CUATRO, i1.UNO_RES_CINCO, i1.UNO_RES_SEIS, i1.UNO_RES_SIETE, i1.UNO_RES_OBS_D, i1.UNO_RES_OBS_E, i2.DOS_RES_UNO, i2.DOS_RES_DOS, i2.DOS_RES_TRES, i3.TRES_RES_UNO, i3.TRES_RES_DOS, i3.TRES_RES_TRES, i3.TRES_RES_CUATRO, i3.TRES_RES_CINCO, i3.TRES_RES_SEIS, i3.TRES_RES_OBS_GENERAL FROM ENCUESTAS AS encuestas INNER JOIN USUARIO AS us ON encuestas.ID_ENCUESTADO = us.ID_USUARIO INNER JOIN ITEM_UNO AS i1 ON encuestas.ID_ENCUESTA = i1.ENCUESTA_ID INNER JOIN ITEM_DOS AS i2 ON encuestas.ID_ENCUESTA = i2.ID_ENCUESTA INNER JOIN ITEM_TRES AS i3 ON encuestas.ID_ENCUESTA = i3.ENCUESTA_ID AND encuestas.ID_ENCUESTA = @ID_ENCUESTA" 
-            
-            UpdateCommand="UPDATE [ENCUESTAS] SET [ID_USUARIO] = @ID_USUARIO, [ID_JEFE] = @ID_JEFE, [ID_ENCUESTADO] = @ID_ENCUESTADO, [ESTADO] = @ESTADO WHERE [ID_ENCUESTA] = @ID_ENCUESTA">
+            DeleteCommand="DELETE FROM [ITEM_TRES] WHERE [ID_ITEM3] = @ID_ITEM3" 
+            InsertCommand="INSERT INTO [ITEM_TRES] ([ID_ENCUESTA], [ENCUESTA_ID], [TRES_RES_UNO], [TRES_RES_DOS], [TRES_RES_TRES], [TRES_RES_CUATRO], [TRES_RES_CINCO], [TRES_RES_SEIS], [TRES_RES_OBS_GENERAL]) VALUES (@ID_ENCUESTA, @ENCUESTA_ID, @TRES_RES_UNO, @TRES_RES_DOS, @TRES_RES_TRES, @TRES_RES_CUATRO, @TRES_RES_CINCO, @TRES_RES_SEIS, @TRES_RES_OBS_GENERAL)" 
+            SelectCommand="SELECT * FROM [ITEM_TRES] WHERE ([ID_ENCUESTA] = @ID_ENCUESTA)" 
+            UpdateCommand="UPDATE [ITEM_TRES] SET  [TRES_RES_UNO] = @TRES_RES_UNO, [TRES_RES_DOS] = @TRES_RES_DOS, [TRES_RES_TRES] = @TRES_RES_TRES, [TRES_RES_CUATRO] = @TRES_RES_CUATRO, [TRES_RES_CINCO] = @TRES_RES_CINCO, [TRES_RES_SEIS] = @TRES_RES_SEIS, [TRES_RES_OBS_GENERAL] = @TRES_RES_OBS_GENERAL WHERE [ID_ITEM3] = @ID_ITEM3">
             <DeleteParameters>
-                <asp:Parameter Name="ID_ENCUESTA" Type="Int32" />
+                <asp:Parameter Name="ID_ITEM3" Type="Int32" />
             </DeleteParameters>
             <InsertParameters>
-                <asp:Parameter Name="ID_USUARIO" Type="Int32" />
-                <asp:Parameter Name="ID_JEFE" Type="Int32" />
-                <asp:Parameter Name="ID_ENCUESTADO" Type="Int32" />
-                <asp:Parameter Name="ESTADO" Type="String" />
+                <asp:Parameter Name="ID_ENCUESTA" Type="Int32" />
+                <asp:Parameter Name="ENCUESTA_ID" Type="Int32" />
+                <asp:Parameter Name="TRES_RES_UNO" Type="String" />
+                <asp:Parameter Name="TRES_RES_DOS" Type="String" />
+                <asp:Parameter Name="TRES_RES_TRES" Type="String" />
+                <asp:Parameter Name="TRES_RES_CUATRO" Type="String" />
+                <asp:Parameter Name="TRES_RES_CINCO" Type="String" />
+                <asp:Parameter Name="TRES_RES_SEIS" Type="String" />
+                <asp:Parameter Name="TRES_RES_OBS_GENERAL" Type="String" />
             </InsertParameters>
             <SelectParameters>
                 <asp:QueryStringParameter Name="ID_ENCUESTA" QueryStringField="id" 
                     Type="Int32" />
             </SelectParameters>
             <UpdateParameters>
-                <asp:Parameter Name="ID_USUARIO" Type="Int32" />
-                <asp:Parameter Name="ID_JEFE" Type="Int32" />
-                <asp:Parameter Name="ID_ENCUESTADO" Type="Int32" />
-                <asp:Parameter Name="ESTADO" Type="String" />
                 <asp:Parameter Name="ID_ENCUESTA" Type="Int32" />
+                <asp:Parameter Name="ENCUESTA_ID" Type="Int32" />
+                <asp:Parameter Name="TRES_RES_UNO" Type="String" />
+                <asp:Parameter Name="TRES_RES_DOS" Type="String" />
+                <asp:Parameter Name="TRES_RES_TRES" Type="String" />
+                <asp:Parameter Name="TRES_RES_CUATRO" Type="String" />
+                <asp:Parameter Name="TRES_RES_CINCO" Type="String" />
+                <asp:Parameter Name="TRES_RES_SEIS" Type="String" />
+                <asp:Parameter Name="TRES_RES_OBS_GENERAL" Type="String" />
+                <asp:Parameter Name="ID_ITEM3" Type="Int32" />
             </UpdateParameters>
         </asp:SqlDataSource>
         <br />

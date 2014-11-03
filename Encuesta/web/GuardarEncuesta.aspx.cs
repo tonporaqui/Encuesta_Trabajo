@@ -130,7 +130,7 @@ public partial class GuardarResultados : System.Web.UI.Page
         en.insertarEncuesta();
 
         dato = en.get_ultimoId();
-        int id_encuesta = Convert.ToInt16(dato.Tables[0].Rows[0].ItemArray[0].ToString());
+        int id_encuesta = Convert.ToInt32(dato.Tables[0].Rows[0].ItemArray[0].ToString());
 
         i1._Id_encuesta = id_encuesta;
         i1._Uno_res_uno = Convert.ToString(lblItem1_r1.Text); 

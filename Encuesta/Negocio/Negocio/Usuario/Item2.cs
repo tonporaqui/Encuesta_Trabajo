@@ -45,5 +45,15 @@ namespace Negocio
             DataSet ds = new DataSet();
             da.Fill(ds);
         }
+        public DataSet get_Item2ByEncuesta()
+        {
+            SqlConnection co = new SqlConnection("Data Source=R580-PC;Initial Catalog=ENCUESTA;Integrated Security=True");
+            string query = "select * from item_dos where id_encuesta = '" + this._Id_encuesta + "'";
+            SqlDataAdapter da = new SqlDataAdapter(query, co);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            return ds;
+        }
     }
 }
