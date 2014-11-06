@@ -60,7 +60,7 @@
                 <td>
                     <asp:DropDownList ID="ddliEncuestado" runat="server" 
                         DataSourceID="SqlDataSource1" DataTextField="APELLIDO" 
-                        DataValueField="ID_ENCUESTADO">
+                        DataValueField="ID_ENCUESTADO" AutoPostBack="True">
                     </asp:DropDownList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                         ConnectionString="<%$ ConnectionStrings:ENCUESTAConnectionString %>" SelectCommand="SELECT USUARIO.NOMBRE+' '+ USUARIO.APELLIDO AS APELLIDO, USUARIO.ID_USUARIO, GRUPOS.ID_ENCUESTADO, GRUPOS.ID_USUARIO AS Expr1, GRUPOS.ID_JEFE 
