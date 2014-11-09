@@ -11,12 +11,12 @@
         .style3
         {
             text-align: left;
-            width: 698px;
+            width: 578px;
         }
         .style4
         {
             text-align: left;
-            width: 47px;
+            width: 158px;
         }
         .style1
         {
@@ -38,6 +38,11 @@
         {
             height: 23px;
         }
+        .style12
+        {
+            text-align: left;
+            width: 40px;
+        }
         </style>
 </head>
 <body>
@@ -48,16 +53,18 @@
         <tr>
             <td class="style3">
                 <h1>
-                    Evaluacion</h1>
+                    Ingreso Item 1 </h1>
             </td>
             <td class="style4">
-                <strong>Usuario</strong>
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/principal.aspx">Principal</asp:HyperLink>
+&nbsp;&nbsp;&nbsp;
+                Usuario
             </td>
             <td class="style1">
                 :
                 <asp:Label ID="lblUsuario" runat="server"></asp:Label>
             </td>
-            <td class="style1">
+            <td class="style12">
                 <asp:Button ID="btnSalir" runat="server" onclick="btnSalir_Click" 
                     style="margin-left: 0px" Text="Salir" />
             </td>

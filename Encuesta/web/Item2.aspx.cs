@@ -49,6 +49,6 @@ public partial class Item2 : System.Web.UI.Page
     {
         Session.RemoveAll();
         Session.Abandon();
-        Response.Redirect("login.aspx");
+        Response.Redirect("Default.aspx");
     }
 }

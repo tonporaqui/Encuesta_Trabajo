@@ -16,7 +16,7 @@ public partial class principal : System.Web.UI.Page
     {
         Session.RemoveAll();
         Session.Abandon();
-        Response.Redirect("login.aspx");
+        Response.Redirect("Default.aspx");
     }
     protected void Button1_Click(object sender, EventArgs e)
     {

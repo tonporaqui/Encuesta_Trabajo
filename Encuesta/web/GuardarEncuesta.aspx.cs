@@ -80,7 +80,7 @@ public partial class GuardarResultados : System.Web.UI.Page
     {
         Session.RemoveAll();
         Session.Abandon();
-        Response.Redirect("login.aspx");
+        Response.Redirect("Default.aspx");
     }
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
